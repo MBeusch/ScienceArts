@@ -49,5 +49,5 @@ def plotArts(dirname, folder_save='Colormaps_selection', suffix_save='viridis', 
         #Process only bmp files.
         if filename[-3:]=='bmp':
         
-            HeatMapplotter(filename, folder_save=folder_save, suffix_save=suffix_save, colormap=colormap, save=save, dpi=dpi)
+            HeatMapplotter(filename, folder_save=folder_save, suffix_save=suffix_save, colormap=colormap, save=save, format=format, dpi=dpi)
         
