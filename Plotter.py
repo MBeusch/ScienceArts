@@ -3,7 +3,7 @@ import numpy as np
 import os
 from skimage.io import imread
 
-def HeatMapplotter(filename_read, folder_save='Colormaps', suffix_save='new', colormap=plt.cm.plasma, save=True, dpi=300):
+def HeatMapplotter(filename_read, folder_save='Colormaps', suffix_save='new', colormap=plt.cm.plasma, save=True, format='pdf', dpi=300):
     """  
     Plots a single image as heatmap and saves it if save is True.
 
@@ -25,18 +25,18 @@ def HeatMapplotter(filename_read, folder_save='Colormaps', suffix_save='new', co
 
     #Define new filename with suffix.
     filename = filename_read.split("/")[-1]
-    new_name = filename.split(".")[0] + f'_{suffix_save}.pdf'
+    new_name = filename.split(".")[0] + f'_{suffix_save}.{format}'
 
     fig, ax = plt.subplots()
     cs = ax.matshow(img,cmap=colormap)
     plt.axis('off') 
-    plt.savefig(f"{create_folder}/{new_name}", dpi=dpi) if save else None
+    plt.savefig(f"{create_folder}/{new_name}", bbox_inches='tight', dpi=dpi) if save else None
     plt.show()
     plt.close()
 
 
 
-def plotArts(dirname, folder_save='Colormaps_selection', suffix_save='viridis', colormap=plt.cm.plasma, save=True, dpi=300):
+def plotArts(dirname, folder_save='Colormaps_selection', suffix_save='viridis', colormap=plt.cm.plasma, save=True, format='pdf', dpi=300):
     """ 
     Plots all bmp files contained in dirname with method HeatMapplotter().
     Heatmaps are saved, if save=True, with the given suffix in the folder 'folder_save'. 
